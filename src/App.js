@@ -7,6 +7,7 @@ import { lightTheme, darkTheme } from 'styles/theme'
 import Header from 'components/Header'
 import Form from 'components/Form'
 import CurrencyGrid from 'components/CurrencyGrid'
+import useDarkMode from 'hooks/useDarkMode'
 
 const useStyles = makeStyles({
   root: {
@@ -17,7 +18,7 @@ const useStyles = makeStyles({
 const INITIAL_LIMIT = 8
 
 function App() {
-  const [mode, setMode] = useState('light')
+  const [mode, setMode] = useDarkMode()
   const [limit, setLimit] = useState(INITIAL_LIMIT)
   const classes = useStyles()
 

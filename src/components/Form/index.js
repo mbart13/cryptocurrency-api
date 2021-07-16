@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { TextField, Button } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
+import PropTypes from 'prop-types'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -76,6 +77,10 @@ const Form = ({ setLimit }) => {
       </Button>
     </form>
   )
+}
+
+Form.propTypes = {
+  setLimit: PropTypes.func,
 }
 
 export default Form

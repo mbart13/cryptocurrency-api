@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles'
 import { formatPrice, formatNumber } from 'utils/helpers'
 import { ReactComponent as DownIcon } from 'assets/icons/icon-down.svg'
 import { ReactComponent as UpIcon } from 'assets/icons/icon-up.svg'
+import PropTypes from 'prop-types'
 
 const useStyles = makeStyles(theme => ({
   root: props => ({
@@ -59,6 +60,8 @@ const CurrencyCard = ({ currency }) => {
       borderRadius="5px"
       textAlign="center"
       className={classes.root}
+      display="flex"
+      flexDirection="column"
     >
       <h2 className={classes.name}>
         {name} {symbol}
@@ -74,7 +77,12 @@ const CurrencyCard = ({ currency }) => {
           <span className={classes.value}>${formatNumber(volume_24h)}</span>
         </ListItem>
       </List>
-      <Box display="flex" justifyContent="center" alignItems="center">
+      <Box
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        marginTop="auto"
+      >
         <Box alignSelf="center" className={classes.arrow}>
           {isDown ? <DownIcon /> : <UpIcon />}
         </Box>
@@ -84,6 +92,17 @@ const CurrencyCard = ({ currency }) => {
       </Box>
     </Box>
   )
+}
+
+CurrencyCard.propTypes = {
+  currency: PropTypes.shape({
+    name: PropTypes.string,
+    symbol: PropTypes.string,
+    price: PropTypes.number,
+    market_cap: PropTypes.number,
+    volume_24h: PropTypes.number,
+    percent_change_24h: PropTypes.number,
+  }),
 }
 
 export default CurrencyCard

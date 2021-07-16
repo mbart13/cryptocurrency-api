@@ -2,14 +2,17 @@ import { memo } from 'react'
 import { Box } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import useSWR from 'swr'
+import PropTypes from 'prop-types'
 
 import CurrencyCard from 'components/CurrencyCard'
 import ErrorFallback from 'components/ErrorFallback'
 import Spinner from 'components/Spinner'
+import { fetcher } from 'utils/api'
 
 const useStyles = makeStyles(theme => ({
   grid: {
     marginTop: '4rem',
+    marginBottom: '2rem',
     display: 'grid',
     gridTemplateColumns: '1fr',
     gap: '2rem',
@@ -30,7 +33,7 @@ const baseUrl = 'https://cryptocurrency-api-backend.vercel.app/api'
 const CurrencyGrid = ({ limit }) => {
   const classes = useStyles()
   const url = `${baseUrl}?limit=${limit}`
-  const { data: response, error } = useSWR(url)
+  const { data: response, error } = useSWR(url, fetcher)
 
   if (error) {
     return <ErrorFallback />
@@ -47,6 +50,10 @@ const CurrencyGrid = ({ limit }) => {
       ))}
     </Box>
   )
+}
+
+CurrencyGrid.propTypes = {
+  limit: PropTypes.number,
 }
 
 export default memo(CurrencyGrid)

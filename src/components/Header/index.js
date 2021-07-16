@@ -6,6 +6,7 @@ import {
   useMediaQuery,
 } from '@material-ui/core'
 import { useTheme, makeStyles } from '@material-ui/core/styles'
+import PropTypes from 'prop-types'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -59,6 +60,10 @@ const Header = ({ toggleTheme }) => {
       />
     </Box>
   )
+}
+
+Header.propTypes = {
+  setLimit: PropTypes.func,
 }
 
 export default Header
