@@ -44,7 +44,7 @@ const MIN_NUMBER = 1
 const MAX_NUMBER = 5000
 
 const Form = ({ setLimit }) => {
-  const [inputValue, setInputValue] = useState(0)
+  const [inputValue, setInputValue] = useState('')
   const classes = useStyles()
 
   const handleChange = e => {
@@ -53,7 +53,9 @@ const Form = ({ setLimit }) => {
 
   const handleSubmit = e => {
     e.preventDefault()
-    setLimit(inputValue)
+    if (inputValue) {
+      setLimit(inputValue)
+    }
   }
 
   return (

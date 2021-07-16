@@ -53,7 +53,7 @@ const CurrencyGrid = ({ limit }) => {
 }
 
 CurrencyGrid.propTypes = {
-  limit: PropTypes.number,
+  limit: PropTypes.string,
 }
 
 export default memo(CurrencyGrid)

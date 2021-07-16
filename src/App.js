@@ -15,7 +15,7 @@ const useStyles = makeStyles({
   },
 })
 
-const INITIAL_LIMIT = 8
+const INITIAL_LIMIT = '8'
 
 function App() {
   const [mode, setMode] = useDarkMode()
