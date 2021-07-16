@@ -4,7 +4,7 @@ const sharedProperties = {
   breakpoints: {
     values: {
       xs: 0,
-      sm: 600,
+      sm: 500,
       md: 768,
       lg: 1100,
       xl: 1920,
@@ -57,7 +57,7 @@ export const lightTheme = createTheme({
     },
     text: {
       primary: 'hsl(230, 17%, 14%)',
-      secondary: 'hsl(228, 12%, 44%)',
+      secondary: '#AEB3CB',
     },
   },
   ...sharedProperties,

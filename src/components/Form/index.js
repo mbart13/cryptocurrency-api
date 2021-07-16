@@ -1,12 +1,5 @@
-import { useRef } from 'react'
-import {
-  Container,
-  CssBaseline,
-  Switch,
-  TextField,
-  Button,
-} from '@material-ui/core'
-import { useTheme, makeStyles } from '@material-ui/core/styles'
+import { TextField, Button } from '@material-ui/core'
+import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -20,7 +13,7 @@ const useStyles = makeStyles(theme => ({
     position: 'relative',
     width: '100%',
     [theme.breakpoints.up('sm')]: {
-      width: '60%',
+      width: '70%',
       margin: '1.5rem auto',
     },
     [theme.breakpoints.up('lg')]: {
@@ -38,6 +31,10 @@ const useStyles = makeStyles(theme => ({
     left: 0,
     color: theme.palette.error.main,
   },
+  inputLabel: {
+    textAlign: 'left',
+    transform: 'translate(0, -5px) scale(0.75)',
+  },
 }))
 
 const MIN_NUMBER = 1
@@ -46,7 +43,7 @@ const MAX_NUMBER = 5000
 const Form = ({ selectedNumber, setSelectedNumber }) => {
   const classes = useStyles()
 
-  const hasError = selectedNumber < MIN_NUMBER || selectedNumber > MAX_NUMBER
+  // let hasError = selectedNumber < MIN_NUMBER || selectedNumber > MAX_NUMBER
 
   const handleChange = e => {
     setSelectedNumber(e.target.value)
@@ -56,26 +53,31 @@ const Form = ({ selectedNumber, setSelectedNumber }) => {
     e.preventDefault()
     console.log(selectedNumber)
   }
-
+  // console.log(hasError)
+  // hasError = false
   return (
     <form className={classes.form} onSubmit={handleSubmit}>
       <TextField
-        error={hasError}
+        // error={hasError}
         id="number-of-currencies"
         label="Enter number of currencies  to retrieve"
         type="number"
-        value={selectedNumber}
-        placeholder="Enter number of currencies"
+        // value={selectedNumber}
         onChange={handleChange}
         className={classes.root}
         InputProps={{ inputProps: { min: MIN_NUMBER, max: MAX_NUMBER } }}
-        InputLabelProps={{ shrink: true }}
+        InputLabelProps={{
+          shrink: true,
+          classes: {
+            root: classes.inputLabel,
+          },
+        }}
       />
-      {hasError && (
+      {/* {hasError && (
         <p className={classes.error} aria-live="polite">
           Number cannot be less than 0 or greaten than 100
         </p>
-      )}
+      )} */}
       <Button variant="outlined" className={classes.button} type="submit">
         Show
       </Button>
