@@ -19,7 +19,6 @@ const useDarkMode = () => {
   }
 
   useEffect(() => {
-    document.body.className = theme
     window.localStorage.setItem('theme', theme)
   }, [theme])
 
