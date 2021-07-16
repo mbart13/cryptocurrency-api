@@ -32,7 +32,7 @@ function App() {
     <ThemeProvider theme={selectedTheme}>
       <CssBaseline />
       <Container maxWidth="lg">
-        <Header toggleTheme={toggleTheme} />
+        <Header mode={mode} toggleTheme={toggleTheme} />
         <main className={classes.root}>
           <Form setLimit={setLimit} />
           <CurrencyGrid limit={limit} />

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useMediaPredicate } from 'react-media-hook'
 
-const Theme = {
+export const Theme = {
   light: 'light',
   dark: 'dark',
 }

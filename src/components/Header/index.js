@@ -7,6 +7,7 @@ import {
 } from '@material-ui/core'
 import { useTheme, makeStyles } from '@material-ui/core/styles'
 import PropTypes from 'prop-types'
+import { Theme } from 'hooks/useDarkMode'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -29,7 +30,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const Header = ({ toggleTheme }) => {
+const Header = ({ mode, toggleTheme }) => {
   const theme = useTheme()
   const matches = useMediaQuery(theme.breakpoints.up('sm'))
   const classes = useStyles()
@@ -52,7 +53,7 @@ const Header = ({ toggleTheme }) => {
             color="textSecondary"
             className={classes.label}
           >
-            Dark Mode
+            {mode === Theme.dark ? 'Light Mode' : 'Dark Mode'}
           </Typography>
         }
         labelPlacement="start"
@@ -63,6 +64,7 @@ const Header = ({ toggleTheme }) => {
 }
 
 Header.propTypes = {
+  mode: PropTypes.string,
   setLimit: PropTypes.func,
 }
 
