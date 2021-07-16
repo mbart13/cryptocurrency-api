@@ -29,4 +29,4 @@ I decided to create [my own proxy](https://github.com/mbart13/cryptocurrency-api
 Additionally I implemented:
 
 - dark/light mode
-- saving to local storage
+- saving theme preference to local storage
