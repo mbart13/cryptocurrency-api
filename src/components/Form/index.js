@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { TextField, Button } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 
@@ -6,15 +7,16 @@ const useStyles = makeStyles(theme => ({
     width: '100%',
   },
   form: {
-    marginTop: '1.5rem',
+    marginTop: '2.5rem',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     position: 'relative',
     width: '100%',
     [theme.breakpoints.up('sm')]: {
-      width: '70%',
-      margin: '1.5rem auto',
+      width: '60%',
+      marginRight: 'auto',
+      marginLeft: 'auto',
     },
     [theme.breakpoints.up('lg')]: {
       width: '50%',
@@ -40,29 +42,25 @@ const useStyles = makeStyles(theme => ({
 const MIN_NUMBER = 1
 const MAX_NUMBER = 5000
 
-const Form = ({ selectedNumber, setSelectedNumber }) => {
+const Form = ({ setLimit }) => {
+  const [inputValue, setInputValue] = useState(0)
   const classes = useStyles()
 
-  // let hasError = selectedNumber < MIN_NUMBER || selectedNumber > MAX_NUMBER
-
   const handleChange = e => {
-    setSelectedNumber(e.target.value)
+    setInputValue(e.target.value)
   }
 
   const handleSubmit = e => {
     e.preventDefault()
-    console.log(selectedNumber)
+    setLimit(inputValue)
   }
-  // console.log(hasError)
-  // hasError = false
+
   return (
     <form className={classes.form} onSubmit={handleSubmit}>
       <TextField
-        // error={hasError}
         id="number-of-currencies"
-        label="Enter number of currencies  to retrieve"
+        label="Enter number of currencies to retrieve"
         type="number"
-        // value={selectedNumber}
         onChange={handleChange}
         className={classes.root}
         InputProps={{ inputProps: { min: MIN_NUMBER, max: MAX_NUMBER } }}
@@ -73,11 +71,6 @@ const Form = ({ selectedNumber, setSelectedNumber }) => {
           },
         }}
       />
-      {/* {hasError && (
-        <p className={classes.error} aria-live="polite">
-          Number cannot be less than 0 or greaten than 100
-        </p>
-      )} */}
       <Button variant="outlined" className={classes.button} type="submit">
         Show
       </Button>
