@@ -5,7 +5,6 @@ import useSWR from 'swr'
 import PropTypes from 'prop-types'
 
 import CurrencyCard from 'components/CurrencyCard'
-import ErrorFallback from 'components/ErrorFallback'
 import Spinner from 'components/Spinner'
 import { fetcher } from 'utils/api'
 
@@ -36,7 +35,7 @@ const CurrencyGrid = ({ limit }) => {
   const { data: response, error } = useSWR(url, fetcher)
 
   if (error) {
-    return <ErrorFallback />
+    throw error
   }
 
   if (!response) {
