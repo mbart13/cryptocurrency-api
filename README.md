@@ -30,3 +30,4 @@ Additionally I implemented:
 
 - dark/light mode
 - saving theme preference to local storage
+- data refresh on tab/window refocus
