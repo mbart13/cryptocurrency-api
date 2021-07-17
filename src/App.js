@@ -29,7 +29,7 @@ function App() {
         <Header mode={mode} toggleTheme={toggleTheme} />
         <main>
           <Form setLimit={setLimit} />
-          <ErrorBoundary key={limit} FallbackComponent={ErrorFallback}>
+          <ErrorBoundary resetKeys={[limit]} FallbackComponent={ErrorFallback}>
             <CurrencyGrid limit={limit} />
           </ErrorBoundary>
         </main>

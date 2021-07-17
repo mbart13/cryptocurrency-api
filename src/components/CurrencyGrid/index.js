@@ -1,4 +1,3 @@
-import { memo } from 'react'
 import { Box } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import useSWR from 'swr'
@@ -55,4 +54,4 @@ CurrencyGrid.propTypes = {
   limit: PropTypes.string,
 }
 
-export default memo(CurrencyGrid)
+export default CurrencyGrid
